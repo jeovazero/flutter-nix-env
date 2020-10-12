@@ -2,7 +2,13 @@
 
 ### Flutter + Nix
 
-(testado somente no Debian 10)
+| Nome | Versão |
+| - | - |
+| Flutter | 1.17.5 |
+| Android SDK Tools | 26.1.1 |
+| Android SDK Platform | 28 |
+
+(testado somente no Debian 10 :orange_heart:)
 
 Precisa de Nix instalado.
 
