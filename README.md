@@ -4,9 +4,10 @@
 
 | Nome | Versão |
 | - | - |
-| Flutter | 1.17.5 |
-| Android SDK Tools | 26.1.1 |
-| Android SDK Platform | 28 |
+| Flutter | 1.22.4 |
+| Dart | 2.10.5 |
+| Android SDK Tools | 28.0.3 |
+| Android SDK Platform | 29 |
 
 (testado somente no Debian 10 :orange_heart:)
 
