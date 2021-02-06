@@ -7,7 +7,7 @@ let
 
   allLicenses = {
     "android-googletv-license" = ./android-googletv-license;
-    "android-sdk-license" = ./android-sdk-license;
+#    "android-sdk-license" = ./android-sdk-license;
     "android-sdk-arm-dbt-license" = ./android-sdk-arm-dbt-license;
     "android-sdk-preview-license" = ./android-sdk-preview-license;
     "mips-android-sysimage-license" = ./mips-android-sysimage-license;

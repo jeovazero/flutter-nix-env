@@ -7,11 +7,11 @@ let
   };
 
   inherit (nixpkgs) pkgs lib;
-  inherit (pkgs) jdk flutter;
+  inherit (pkgs) jdk8_headless flutter;
 
   android = pkgs.androidenv.composeAndroidPackages {
-    toolsVersion = "26.1.1";
-    platformVersions = [ "28" ];
+    buildToolsVersions = [ "28.0.3" ];
+    platformVersions = [ "29" ];
     abiVersions = [ "x86" "x86_64"];
   };
 
@@ -39,11 +39,11 @@ in
     buildInputs = [
       flutter
       androidsdk
-      jdk
+      jdk8_headless
     ];
 
     shellHook = ''
       export ANDROID_HOME=${androidsdk}/libexec/android-sdk
-      export JAVA_HOME=${jdk.home}
+      export JAVA_HOME=${jdk8_headless.home}
     '';
   }
