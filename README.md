@@ -5,7 +5,7 @@
 | Nome | Versão |
 | - | - |
 | Flutter | 1.22.4 |
-| Dart | 2.10.5 |
+| Dart | 2.12.0-259.8.beta (null-safety) |
 | Android SDK Tools | 28.0.3 |
 | Android SDK Platform | 29 |
 
