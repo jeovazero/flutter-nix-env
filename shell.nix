@@ -1,11 +1,15 @@
 { pinnedNixpkgs ? import ./nix/pinned.nix }:
 let
   nixpkgs = pinnedNixpkgs { config = { android_sdk.accept_license = true; }; };
+  nixpkgsUnstable = import ./nix/pinned-unstable.nix { };
+
+  scrcpy = nixpkgsUnstable.pkgs.scrcpy;
 
   inherit (nixpkgs) pkgs lib fetchurl;
   inherit (pkgs) jdk8_headless flutter dart;
 
-  # Dart Beta
+  # Dart Beta for null-safety
+  # only for tests purpose
   baseDartArchive = "https://storage.googleapis.com/dart-archive/channels";
   channel = "beta";
   dartVersion = "2.12.0-259.8.beta";
@@ -48,15 +52,13 @@ let
   androidsdk = android.androidsdk.overrideAttrs (oldAttrs: {
     installPhase = oldAttrs.installPhase + installPhaseAdditional;
   });
-in {
-  stable = pkgs.mkShell {
-    buildInputs = [ flutter androidsdk jdk8_headless dart_beta ];
-    shellHook = ''
-      mkdir -p ~/.pub-cache
-      export ANDROID_HOME=${androidsdk}/libexec/android-sdk
-      export JAVA_HOME=${jdk8_headless.home}
-      export PUB_CACHE=~/.pub-cache
-    '';
-
-  };
+in pkgs.mkShell {
+  # using flutter and dart stable
+  buildInputs = [ flutter androidsdk jdk8_headless dart scrcpy ];
+  shellHook = ''
+    mkdir -p ~/.pub-cache
+    export ANDROID_HOME=${androidsdk}/libexec/android-sdk
+    export JAVA_HOME=${jdk8_headless.home}
+    export PUB_CACHE=~/.pub-cache
+  '';
 }
